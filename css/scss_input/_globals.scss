@@ -1,0 +1,67 @@
+html {
+  height: 100%;
+
+  font-family: "Roboto", sans-serif;
+  text-rendering: optimizeLegibility;
+
+  background: $main-background;
+  color: $black;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+}
+h2 {
+  font-size: 48px
+}
+h3 {
+  font-size: 38px
+}
+h4 {
+  font-size: 32px;
+}
+h5 {
+  font-size: 24px;
+  color: var(--base, #A4AEB7);
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+input[type="number"] {
+  background-color: #eee;
+  vertical-align: top;
+  outline: none;
+  padding: 0;
+  height: 100%;
+  line-height: 40px;
+  text-indent: 10px;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+input[type="number"]:focus {
+  outline: 2px solid blue;
+}

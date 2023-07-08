@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <link rel="stylesheet" type="text/css" href="/css/css_output/main.css" />
+    <script type="text/javascript" src="js/js_input/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+    <body>
+        <div am-wrapper="">
+            <div am-container="main">
+                <div id="content" am-container="graph">
+                    <div class="box1 is-active"><div am-blocking></div><div id="box1" class="is-active"></div></div>
+                    <div class="box2"><div am-blocking></div><div id="box2"></div></div>
+                </div>
+                <div am-container="control-panel">
+                    <div am-control-panel="wrapper">
+                        <div am-control-panel="animation">
+                            <h5>Animation</h5>
+                            <button id="anim-start">Start</button>
+                            <button id="anim-stop">Stop</button>
+                        </div>
+                        <div am-control-panel="systems">
+                            <h5>Systems</h5>
+                            <button id="dekart">Dekart</button>
+                            <button id="polar">Polar</button>
+                        </div>
+                        <div am-control-panel="a-value">
+                            <h5>a - value</h5>
+                            <form>
+                                <input type="number" id="a-value" name="a-value" step="10" min="0" max="100" value="1" required>
+                            </form>
+                        </div>
+                        <div am-control-panel="moving">
+                            <h5>Navigate - x</h5>
+                            <button id="x-minus">-</button>
+                            <button id="x-plus">+</button>
+                        </div>
+                        <div am-control-panel="moving">
+                            <h5>Navigate - y</h5>
+                            <button id="y-minus">-</button>
+                            <button id="y-plus">+</button>
+                        </div>
+                        <div am-control-panel="moving">
+                            <h5>Navigate - reset</h5>
+                            <button id="nav_reset">0</button>
+                        </div>
+                        <div am-control-panel="zoom">
+                            <h5>Zoom</h5>
+                            <button id="zoom-minus">-</button>
+                            <button id="zoom-plus">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

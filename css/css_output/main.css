@@ -1,0 +1,295 @@
+/* Reset */ /* Reset based on Eric Meyer's 2.0 Reset: http://meyerweb.com/eric/tools/css/reset/
+   plus box-sizing, of course */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+a {
+  color: #00aff0;
+  text-decoration: inherit;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+input, textarea {
+  resize: none;
+  background: none;
+  border: none;
+  outline: none;
+  margin: 0;
+}
+
+/* Variables */
+[am-container~=graph] #box2, [am-container~=graph] #box1 {
+  height: 100%;
+  min-width: 100%;
+}
+
+/* AM Attributes*/
+[am-Flex-Row] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+
+[am-Flex-Col] {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reverse order */
+[am-Flex-Row~=reverse] {
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+/* Distribution */
+[am-Flex-Row~=between] {
+  justify-content: space-between;
+}
+
+[am-Flex-Row~=center] {
+  justify-content: center;
+}
+
+[am-Flex-Col~=between] {
+  justify-content: space-between;
+}
+
+/* Alignment per row */
+/* Horizontal */
+[am-Flex-Row~=start] {
+  justify-content: flex-start;
+  text-align: start;
+}
+
+[am-Flex-Row~=end] {
+  justify-content: flex-end;
+  text-align: end;
+}
+
+[am-Flex-Row~=center] {
+  justify-content: center;
+}
+
+/* Vertical */
+[am-Flex-Row~=top] {
+  align-items: flex-start;
+}
+
+[am-Flex-Row~=bottom] {
+  align-items: flex-end;
+}
+
+[am-Flex-Row~=middle] {
+  align-items: center;
+}
+
+/* Alignment per column */
+[am-Flex-Col~=top] {
+  align-items: flex-start;
+}
+
+[am-Flex-Col~=bottom] {
+  align-items: flex-end;
+}
+
+[am-Flex-Col~=middle] {
+  align-items: center;
+}
+
+[am-blocking] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background: transparent;
+}
+
+/* Modules */
+[am-wrapper] {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+[am-container~=main] {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  padding-top: 5%;
+}
+
+[am-container~=graph] {
+  width: 40vw;
+  aspect-ratio: 1/1;
+}
+[am-container~=graph] .box1 {
+  position: relative;
+  display: none;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+[am-container~=graph] .box2 {
+  position: relative;
+  display: none;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+[am-container~=graph] .box1.is-active {
+  display: block;
+}
+[am-container~=graph] .box2.is-active {
+  display: block;
+}
+[am-container~=control-panel] {
+  width: 20vw;
+}
+
+[am-control-panel~=wrapper] {
+  padding: 1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0 22px 22px 0;
+  border-top: 2px solid rgb(255, 255, 255);
+  border-right: 2px solid rgb(255, 255, 255);
+  background: radial-gradient(171.63% 171.63% at 50% 50%, #FFF 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(50% 50% at 50% 50%, #FFF 0%, rgba(255, 255, 255, 0) 100%), #D8DEE3;
+  box-shadow: 4px -4px 14px 0px #FFF, 12px 12px 16px 0px rgba(164, 174, 183, 0.15), 0px 4px 4px 0px rgba(164, 174, 183, 0.25);
+}
+[am-control-panel~=wrapper] button {
+  padding: 10px 15px;
+  border-radius: 12px;
+  border-top: 2px solid rgb(255, 255, 255);
+  border-left: 2px solid rgb(255, 255, 255);
+  border-right: none;
+  border-bottom: none;
+  background: radial-gradient(171.63% 171.63% at 50% 50%, #FFF 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(50% 50% at 50% 50%, #FFF 0%, rgba(255, 255, 255, 0) 100%), #D8DEE3;
+  box-shadow: -4px -4px 14px 0px #FFF, 12px 12px 16px 0px rgba(164, 174, 183, 0.15), 0px 4px 4px 0px rgba(164, 174, 183, 0.25);
+  color: rgb(164, 174, 183);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 18px;
+}
+[am-control-panel~=wrapper] button:active {
+  border-radius: 12px;
+  border-top: 1px solid var(--btn-stroke, #FFF);
+  border-left: 1px solid var(--btn-stroke, #FFF);
+  background: #EFF1F8;
+  box-shadow: -4px -4px 14px 0px #FFF, 0px 4px 4px 0px rgba(164, 174, 183, 0.25) inset;
+}
+[am-control-panel~=wrapper] button.is-active {
+  border-radius: 12px;
+  border-top: 1px solid var(--btn-stroke, #FFF);
+  border-left: 1px solid var(--btn-stroke, #FFF);
+  background: #EFF1F8;
+  box-shadow: -4px -4px 14px 0px #FFF, 0px 4px 4px 0px rgba(164, 174, 183, 0.25) inset;
+}
+
+/* Set global styles */
+html {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  text-rendering: optimizeLegibility;
+  background: #D4DAE2;
+  color: #000000;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 60px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 38px;
+}
+
+h4 {
+  font-size: 32px;
+}
+
+h5 {
+  font-size: 24px;
+  color: var(--base, #A4AEB7);
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+input[type=number] {
+  background-color: #eee;
+  vertical-align: top;
+  outline: none;
+  padding: 0;
+  height: 100%;
+  line-height: 40px;
+  text-indent: 10px;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+input[type=number]:focus {
+  outline: 2px solid blue;
+}

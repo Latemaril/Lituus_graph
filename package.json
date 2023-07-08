@@ -1,0 +1,26 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "university educational practice",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladislav",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-rsync": "0.0.8",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^9.0.0",
+    "sass": "^1.62.1",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "three": "^0.154.0"
+  }
+}

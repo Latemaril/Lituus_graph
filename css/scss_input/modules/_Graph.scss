@@ -1,0 +1,51 @@
+[am-wrapper] {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+[am-container~="main"] {
+  width: max-content;
+  height: max-content;
+
+  display: flex;
+
+  padding-top: 5%;
+}
+
+[am-container~="graph"] {
+  width: 40vw;
+  aspect-ratio: 1/1;
+
+  .box1 {
+    position: relative;
+    display: none;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  .box2 {
+    position: relative;
+    display: none;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+
+  .box1.is-active {
+    display: block;
+  }
+
+  .box2.is-active {
+    display: block;
+  }
+
+  #box1 {
+    @extend %full-size;
+  }
+
+  #box2 {
+    @extend %full-size;
+  }
+}
