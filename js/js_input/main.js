@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const ball = '<circle id="ball" cx="272" cy="250" r="2" fill="#FF0000"></circle>'
+    document.querySelector('[am-control-panel="wrapper"]').style.height = `${document.querySelector('.box1').clientHeight}px`
+    window.addEventListener('resize', () => {
+        if (document.querySelector('.box1.is-active')) {
+            document.querySelector('[am-control-panel="wrapper"]').style.height = `${document.querySelector('.box1').clientHeight}px`
+        } else {
+            document.querySelector('[am-control-panel="wrapper"]').style.height = `${document.querySelector('.box2').clientHeight}px`
+        }
+        console.log(document.querySelector('[am-container="graph"]').querySelector('.is-active').clientHeight)
+    })
+
+
     const dekart = document.querySelector('.box1')
     const polar = document.querySelector('.box2')
 
@@ -26,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (document.getElementById('r_2')) {
             document.getElementById('r_2').parentElement.remove()
         }
-        console.log('csdcsd')
+        a_value.value = k1
+        console.log('dekart')
     })
 
     polar_button.addEventListener('click', () => {
@@ -35,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (document.getElementById('r_1')) {
             document.getElementById('r_1').parentElement.remove()
         }
-        console.log('csdcsdcac')
+        a_value.value = k2
+        console.log('polar')
     })
 
     function Create_rect(path, svg, rect, id) {
@@ -67,15 +79,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let promise = new Promise((resolve, reject) => {
 
+
             // Готовим диаграмму
-            let b1 = JXG.JSXGraph.initBoard('box1', {axis:true, boundingbox: [-1, 1, 1, -1], showCopyright:false, grid:false});
+            let b1 = JXG.JSXGraph.initBoard('box1', {axis:true, boundingbox: [-3, 3, 3, -3], showCopyright:false});
             let c1 = b1.create('curve', [function(phi){return Math.sqrt(k1/phi); }, [0, 0],0, 8*Math.PI],
                 {curveType:'polar', strokewidth:1, strokeColor: 'red'});
+
             // resolve('result')
 
 
 
-            let b2 = JXG.JSXGraph.initBoard('box2', {axis:false, boundingbox:[-1, 1, 1, -1]});
+            let b2 = JXG.JSXGraph.initBoard('box2', {axis:false, boundingbox:[-3, 3, 3, -3]});
 // Horizontal axis with polar grid lines
             let ax1 = b2.create('axis', [[0,0], [1,0]], {
                 ticks: {
@@ -100,16 +114,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             // Показать точку начала линии
-            var startPoint = b2.create('point', [-0.85, Math.tan(Math.PI / 6) * -0.85], {name: '', size: 1, color: 'transparent'});
-
-            // Показать точку конца линии
-            var endPoint = b2.create('point', [0.85, Math.tan(Math.PI / 6) * 0.85], {name: '', size: 1, color: 'transparent'});
+            // var startPoint = b2.create('point', [-2.7, Math.tan(Math.PI / 6) * -2.7], {name: '', size: 1, color: 'transparent'});
+            //
+            // // Показать точку конца линии
+            // var endPoint = b2.create('point', [2.7, Math.tan(Math.PI / 6) * 2.7], {name: '', size: 1, color: 'transparent'});
 
             // Добавить текстовую надпись к первой точке
-            var label1 = b2.create('text', [-0.85, Math.tan(Math.PI / 6) * -0.85, '30°'], {offset: [-30, -20]});
+            var deg210 = b2.create('text',[-2.7, Math.tan(Math.PI / 6) * -2.7, '210°'],);
+            var deg30 = b2.create('text',[2.6, Math.tan(Math.PI / 6) * 2.6 , '30°'],);
 
-            // Добавить текстовую надпись ко второй точке
-            var label2 = b2.create('text', [0.85, Math.tan(Math.PI / 6) * 0.85, '210°'], {offset: [10, 10]});
+            var deg60 = b2.create('text',[1.5, Math.tan(Math.PI / 3) * 1.5, '60°'],);
+            var deg240 = b2.create('text',[-1.5, Math.tan(4 * Math.PI / 3) * -1.5, '240°'],);
+
+            var deg90 = b2.create('text',[0.1, 2.95, '90°'],);
+            var deg270 = b2.create('text',[-0.2, -2.95,"270°"],);
+
+            var deg120 = b2.create('text',[-1.5, Math.tan(2 * Math.PI / 3) * -1.5, '120°'],);
+            var deg300 = b2.create('text',[1.5, Math.tan(5 * Math.PI / 3) * 1.5, '300°'],);
+
+            var deg150 = b2.create('text',[-2.6, Math.tan(5 * Math.PI / 6) * -2.6, '150°'],);
+            var deg330 = b2.create('text',[2.6, Math.tan(11 * Math.PI / 6) * 2.6, '330°'],);
 
 // Vertical axis with horizontal ticks
             let ax2 = b2.create('axis', [[0,0], [0,1]], {
@@ -130,8 +154,17 @@ document.addEventListener('DOMContentLoaded', function () {
             resolve('result')
 
             a_value.addEventListener('input', () => {
-
+                if (document.querySelector('.box1.is-active')) {
+                    k1 = a_value.value
+                    b1.update()
+                } else {
+                    k2 = a_value.value
+                    b2.update()
+                }
             })
+
+            document.getElementById("box1_navigationbar").style.display = 'none'
+            document.getElementById("box2_navigationbar").style.display = 'none'
 
         });
 

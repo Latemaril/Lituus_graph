@@ -65,3 +65,10 @@ input[type="number"] {
 input[type="number"]:focus {
   outline: 2px solid blue;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+
+  opacity: 1;
+
+}
