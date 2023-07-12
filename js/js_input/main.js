@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    class ControlPanel {
+    class Support {
         constructor(wrapperElement) {
             this.wrapperElement = wrapperElement;
         }
@@ -15,9 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     class Diagram {
-        constructor(descartesButton, polarButton, a_value, x_value, y_value) {
+        constructor(descartesButton, polarButton, descartesGrid, polarGrid, a_value, x_value, y_value) {
             this.descartesButton = descartesButton;
             this.polarButton = polarButton;
+            this.descartesGrid = descartesGrid;
+            this.polarGrid = polarGrid;
             this.a_value = a_value;
             this.x_value = x_value;
             this.y_value = y_value;
@@ -166,6 +168,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.updateY();
             });
 
+            this.descartesButton.addEventListener('click', () => {
+                this.polarGrid.classList.remove('is-active');
+                this.descartesGrid.classList.add('is-active');
+                if (document.getElementById('r_2')) {
+                    document.getElementById('r_2').parentElement.remove();
+                }
+                this.a_value.value = this.k1;
+                this.x_value.value = this.xLituusParametric;
+                this.y_value.value = this.yLituusParametric;
+            });
+
+            this.polarButton.addEventListener('click', () => {
+                this.descartesGrid.classList.remove('is-active');
+                this.polarGrid.classList.add('is-active');
+                if (document.getElementById('r_1')) {
+                    document.getElementById('r_1').parentElement.remove();
+                }
+                this.a_value.value = this.k2;
+                this.x_value.value = this.xLituusPolar;
+                this.y_value.value = this.yLituusPolar;
+            });
+
             document.getElementById('box1_navigationbar').style.display = 'none';
             document.getElementById('box2_navigationbar').style.display = 'none';
         }
@@ -268,35 +292,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const descartesButton = document.getElementById('dekart');
     const polarButton = document.getElementById('polar');
 
-    const controlPanel = new ControlPanel(controlPanelWrapper);
-    const diagram = new Diagram(descartesButton, polarButton, a_value, x_value, y_value);
+    const controlPanel = new Support(controlPanelWrapper);
+    const diagram = new Diagram(descartesButton, polarButton, descartesGrid, polarGrid, a_value, x_value, y_value);
     const animation = new Animation(document.getElementById('anim-start'), document.getElementById('anim-stop'));
 
     window.addEventListener('resize', () => {
         controlPanel.setHeight()
     });
 
-    descartesButton.addEventListener('click', () => {
-        polarGrid.classList.remove('is-active');
-        descartesGrid.classList.add('is-active');
-        if (document.getElementById('r_2')) {
-            document.getElementById('r_2').parentElement.remove();
-        }
-        a_value.value = diagram.k1;
-        x_value.value = diagram.xLituusParametric;
-        y_value.value = diagram.yLituusParametric;
-    });
-
-    polarButton.addEventListener('click', () => {
-        descartesGrid.classList.remove('is-active');
-        polarGrid.classList.add('is-active');
-        if (document.getElementById('r_1')) {
-            document.getElementById('r_1').parentElement.remove();
-        }
-        a_value.value = diagram.k2;
-        x_value.value = diagram.xLituusPolar;
-        y_value.value = diagram.yLituusPolar;
-    });
 
     diagram.initialize();
     controlPanel.setHeight();
